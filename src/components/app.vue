@@ -1,33 +1,42 @@
 <template>
-    <div>
-        <el-container>
-            <!--顶部 Header区域-->
-            <el-header>
-                <span class="el-icon-arrow-left arrow"></span>
-                <span class="title">学而时习之</span>
-            </el-header>
-            <!--中间路由 router-view区域-->
-            <el-main>Main</el-main>
-            <!--底部 Tabs区域-->
-            <el-footer>
-                <section class="tabs">
-                    <div class="tab">
-                        <span>主页</span>
-                    </div>
-                    <div class="tab">
-                        <span>发现</span>
-                    </div>
-                    <div class="tab">
-                        <span>购物车</span>
-                    </div>
-                    <div class="tab">
-                        <span>我的</span>
-                    </div>
-                </section>
-            </el-footer>
-        </el-container>
+    <div style="width: 100%; background: #fff;" direction="column">
+        <mu-flex class="flex-wrapper" justify-content="start" flex>
+            <mu-appbar style="width: 100%;" color="primary">
+                <mu-button icon slot="left">
+                    <mu-icon value="menu"></mu-icon>
+                </mu-button>
+                思学
+
+                <mu-button flat slot="right">登录</mu-button>
+            </mu-appbar>
+        </mu-flex>
+        <mu-flex class="flex-wrapper" justify-content="center" flex>
+            <mu-slide-right-transition>
+                <router-view></router-view>
+            </mu-slide-right-transition>
+        </mu-flex>
+        <mu-flex class="flex-wrapper footer" justify-content="end" flex>
+            <mu-tabs :value.sync="active3" center color="primary">
+                <mu-tab to="/home">
+                    <mu-icon value="account_balance"></mu-icon>
+                    首页
+                </mu-tab>
+                <mu-tab to="/member">
+                    <mu-icon value="account_circle"></mu-icon>
+                    会员
+                </mu-tab>
+                <mu-tab to="/shopping">
+                    <mu-icon value="shopping_cart"></mu-icon>
+                    购物车
+                </mu-tab>
+                <mu-tab to="/search">
+                    <mu-icon value="search"></mu-icon>
+                    搜索
+                </mu-tab>
+            </mu-tabs>
 
 
+        </mu-flex>
     </div>
 </template>
 
@@ -36,53 +45,26 @@
     export default {
         data() {
             return {
-                activeName: 'second'
+                active3: 0
             };
         },
-        methods: {
-            handleClick(tab, event) {
-                console.log(tab, event);
-            }
-        }
+        methods: {}
     }
 </script>
 
 
 <style lang="scss">
-    .el-header, .el-footer {
-        background-color: cornflowerblue;
-        color: #fff;
-        line-height: 60px;
-        text-align: center;
-        position: relative;
-    }
-
-    .el-header .title {
-        margin: 0 auto;
-        font-weight: bold;
-    }
-
-    .el-header .arrow {
+    .footer {
+        width: 100%;
         position: absolute;
-        left: 10px;
-        line-height: 60px;
+        bottom: 0;
+        left: 0;
     }
 
-    .el-main {
-        background-color: #E9EEF3;
-        color: #333;
-        text-align: center;
-        line-height: 160px;
-    }
-
-    .el-footer{
-        .tabs{
-            width: 100%;
-            display: flex;
-           .tab{
-               list-style: none;
-               flex: 25%;
-           }
+    .mu-tabs {
+        display: flex;
+        .mu-tab {
+            flex: 25%;
         }
     }
 </style>

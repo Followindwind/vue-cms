@@ -22,18 +22,39 @@ import app from './components/app.vue'
 //手动安装VueRouter
 Vue.use(VueRouter)
 
-//导入bootstrap图标
-import 'bootstrap/dist/css/bootstrap.css'
+//导入vue-resource
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
 
-//导入所有ElementUI组件
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI);
+//导入muse-ui UI组件库
+import MuseUI from 'muse-ui';
+import 'muse-ui/dist/muse-ui.css';
+Vue.use(MuseUI);
+//导入material-design-icons
+import 'material-design-icons/iconfont/material-icons.css'
+import Toast from 'muse-ui-toast';
+
+Vue.use(Toast);
+
+//水波纹效果
+import Helpers from 'muse-ui/lib/Helpers';
+
+Vue.use(Helpers);
+
+//导入时间插件
+import momemt from 'moment'
 
 //导入路由模块
 import router from './router'
 
+//全局配置baseurl
+Vue.http.options.root='http://wwww.jhost.com/'
+Vue.http.options.emulateJSON=true
 
+//定义全局过滤器
+Vue.filter('dataFormat',function (dataStr,pattern="YYYY-MM-DD HH:mm:ss") {
+   return momemt(dataStr).format(pattern)
+})
 
 let vm = new Vue({
     el: '#app',

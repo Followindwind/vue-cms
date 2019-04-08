@@ -14,8 +14,13 @@
     "bootstrap": "^4.3.1",
     "element-ui": "^2.7.2",
     "jquery": "^3.3.1",
+    "material-design-icons": "^3.0.1",
     "mint-ui": "^2.2.13",
+    "moment": "^2.24.0",
+    "muse-ui": "^3.0.2",
+    "muse-ui-toast": "^0.3.0",
     "vue": "^2.6.10",
+    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.2",
     "webpack": "^4.29.6",
     "webpack-dev-server": "^3.2.1"
