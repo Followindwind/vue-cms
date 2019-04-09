@@ -9,6 +9,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 //当以命令形式运行webpack或webpack-dev-server的时候,会检查项目根目录中的配置文件,进行构建
 
 module.exports = {
+    mode:'production',
     //入口文件
     entry: path.join(__dirname, './src/index.js'),
     //指定输出选项
@@ -40,9 +41,9 @@ module.exports = {
             {test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']},
             //scss
             {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
-            //处理图片路径,limit设置图片base编码的大小限制,单位字节
+            //处理图片路径limit=2048576设置图片base编码的大小限制,单位字节
             //&name=[name].[ext]:保持原图片名称,[hash:8]8位哈希值命名
-            {test: /\.(jpg|png|gif|bmp|jpeg)$/, use: 'url-loader?limit=1048576&name=[hash:8]-[name].[ext]'},
+            {test: /\.(jpg|png|gif|bmp|jpeg)$/, use: 'url-loader?limit=2048576&name=[hash:8]-[name].[ext]'},
             //字体图标
             {test: /\.(eot|svg|ttf|woff|woff2)$/, use: 'url-loader'},
             //配置识别es语法,exclude排除node_modules目录
@@ -58,7 +59,20 @@ module.exports = {
              'vue$':'vue/dist/vue.js'
         }
 
+    },
+    //警告 webpack 的性能提示
+    performance: {
+        hints:'warning',
+        //入口起点的最大体积
+        maxEntrypointSize: 50000000,
+        //生成文件的最大体积
+        maxAssetSize: 30000000,
+        //只给出 js 文件的性能提示
+        assetFilter: function(assetFilename) {
+            return assetFilename.endsWith('.js');
+        }
     }
+
 }
 
 /*配置babel步骤*/

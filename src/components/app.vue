@@ -2,8 +2,8 @@
     <div class="app-container" style="width: 100%; background: #fff;" direction="column">
         <mu-flex class="flex-wrapper" justify-content="start" flex>
             <mu-appbar style="width: 100%;" color="primary">
-                <mu-button icon slot="left">
-                    <mu-icon value="menu"></mu-icon>
+                <mu-button icon slot="left" @click="goBack" v-show="flag">
+                    <mu-icon value="arrow_back"></mu-icon>
                 </mu-button>
                 思学
 
@@ -41,7 +41,7 @@
                 </mu-tab>
                 <mu-tab to="/shopping">
                     <mu-icon value="shopping_cart"></mu-icon>
-                    <span class="mui-badge" id="badge">0</span>
+                    <span class="mui-badge" id="badge">{{ $store.getters.getAllCount}}</span>
                     购物车
                 </mu-tab>
                 <mu-tab to="/search">
@@ -62,10 +62,29 @@
     export default {
         data() {
             return {
-                active3: 0
+                active3: 0,
+                flag:true
             };
         },
-        methods: {}
+        methods: {
+            //点击后退
+            goBack(){
+                this.$router.go(-1)
+            }
+        },
+        created(){
+            this.flag=this.$router.path==='/home'?false:true
+        },
+        watch:{
+            //监厛路由变化
+            '$route.path':function (newVal) {
+                if (newVal=='/home'){
+                    this.flag=false
+                }else{
+                    this.flag=true
+                }
+            }
+        }
     }
 </script>
 

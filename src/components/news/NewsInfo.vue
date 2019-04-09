@@ -7,7 +7,7 @@
                 </mu-avatar>
             </mu-card-header>
             <mu-card-media title="指尖的阳光" sub-title="四月的心帘">
-                <img src="../../images/sun.a646a52d.jpg">
+                <img src="../../images/sun.jpg">
             </mu-card-media>
             <mu-card-title title="阳光" sub-title="阳光与阴影"></mu-card-title>
             <mu-card-text>
