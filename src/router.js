@@ -14,6 +14,12 @@ import newsInfo from './components/news/NewsInfo.vue'
 import pictureSharing from './components/share/PictureSharing.vue'
 
 
+/*商品列表*/
+import GoodsList from './components/goods/GoodsList.vue'
+import GoodsInfo from './components/goods/GoodsInfo.vue'
+import GoodsDesc from './components/goods/GoodsDesc.vue'
+import GoodsComment from './components/goods/GoodsComment.vue'
+
 
 //创建路由对象
 var router = new VueRouter({
@@ -26,6 +32,10 @@ var router = new VueRouter({
         {path:'/home/newslist',component:newslist},
         {path:'/news/newsInfo',component:newsInfo},
         {path:'/home/pictureSharing',component:pictureSharing},
+        { path: '/home/goodslist', component: GoodsList },
+        { path: '/home/goodsinfo/:id', component: GoodsInfo, name: 'goodsinfo' },
+        { path: '/home/goodsdesc/:id', component:GoodsDesc, name: 'goodsdesc'  },
+        { path: '/home/goodscomment/:id', component: GoodsComment, name: 'goodscomment' }
 
     ]
 })

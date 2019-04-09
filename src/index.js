@@ -41,6 +41,20 @@ import Helpers from 'muse-ui/lib/Helpers';
 
 Vue.use(Helpers);
 
+import MintUI from 'mint-ui'
+Vue.use(MintUI)
+import 'mint-ui/lib/style.css'
+
+// 导入 MUI 的样式
+import './libs/mui/css/mui.min.css'
+// 导入扩展图标样式
+import './libs/mui/css/icons-extra.css'
+
+// 安装 图片预览插件
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
+
+
 //导入时间插件
 import momemt from 'moment'
 
@@ -52,7 +66,7 @@ Vue.http.options.root='http://wwww.jhost.com/'
 Vue.http.options.emulateJSON=true
 
 //定义全局过滤器
-Vue.filter('dataFormat',function (dataStr,pattern="YYYY-MM-DD HH:mm:ss") {
+Vue.filter('dateFormat',function (dataStr,pattern="YYYY-MM-DD HH:mm:ss") {
    return momemt(dataStr).format(pattern)
 })
 

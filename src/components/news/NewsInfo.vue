@@ -28,7 +28,7 @@
 
 <script>
     //导入子组件
-    import comment from '../comment.vue'
+    import comment from '../subcomponents/comment.vue'
     export default {
         name: "NewsInfo",
         data(){

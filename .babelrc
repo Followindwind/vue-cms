@@ -1,5 +1,8 @@
 {
   "presets": ["@babel/preset-env"],
-  "plugins": ["@babel/plugin-transform-runtime","@babel/plugin-proposal-class-properties"]
+  "plugins": ["@babel/plugin-transform-runtime","@babel/plugin-proposal-class-properties","@babel/plugin-transform-strict-mode"],
+  "ignore": [
+    "./src/libs/mui/js/*.js"  // 建了lib文件夹，存放mui相关文件
+  ]
 }
 
